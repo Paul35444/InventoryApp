@@ -212,6 +212,22 @@
     <Compile Include="Migrations\201710172311142_PopulateCompaniesTable.Designer.cs">
       <DependentUpon>201710172311142_PopulateCompaniesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710181920569_InputData.cs" />
+    <Compile Include="Migrations\201710181920569_InputData.Designer.cs">
+      <DependentUpon>201710181920569_InputData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710181941285_AddForeignKeyPropertiesToItem.cs" />
+    <Compile Include="Migrations\201710181941285_AddForeignKeyPropertiesToItem.Designer.cs">
+      <DependentUpon>201710181941285_AddForeignKeyPropertiesToItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710182000145_AddForeignKeyPropertiesToItem2.cs" />
+    <Compile Include="Migrations\201710182000145_AddForeignKeyPropertiesToItem2.Designer.cs">
+      <DependentUpon>201710182000145_AddForeignKeyPropertiesToItem2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710182002265_UpdatedItemModelReqs.cs" />
+    <Compile Include="Migrations\201710182002265_UpdatedItemModelReqs.Designer.cs">
+      <DependentUpon>201710182002265_UpdatedItemModelReqs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -310,6 +326,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710172311142_PopulateCompaniesTable.resx">
       <DependentUpon>201710172311142_PopulateCompaniesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710181920569_InputData.resx">
+      <DependentUpon>201710181920569_InputData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710181941285_AddForeignKeyPropertiesToItem.resx">
+      <DependentUpon>201710181941285_AddForeignKeyPropertiesToItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710182000145_AddForeignKeyPropertiesToItem2.resx">
+      <DependentUpon>201710182000145_AddForeignKeyPropertiesToItem2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710182002265_UpdatedItemModelReqs.resx">
+      <DependentUpon>201710182002265_UpdatedItemModelReqs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

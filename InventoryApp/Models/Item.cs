@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace InventoryApp.Models
 {
@@ -7,10 +6,12 @@ namespace InventoryApp.Models
     {
         public int Id { get; set; }
 
-        [Required]
         public ApplicationUser User { get; set; }
 
-        public DateTime DateTime { get; set; }
+        [Required]
+        public string UserId { get; set; }
+
+        //public DateTime DateTime { get; set; }
 
         [Required]
         [StringLength(255)]
@@ -21,7 +22,9 @@ namespace InventoryApp.Models
         [Required]
         public int Quantity { get; set; }
 
+        public string Company { get; set; }
+
         [Required]
-        public Company Company { get; set; }
+        public byte CompanyId { get; set; }
     }
 }
