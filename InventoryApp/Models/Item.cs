@@ -16,7 +16,7 @@ namespace InventoryApp.Models
         [StringLength(255)]
         public string Description { get; set; }
 
-        public string Cost { get; set; }
+        public int Cost { get; set; }
         
         [Required]
         public int Quantity { get; set; }

@@ -15,7 +15,10 @@ namespace InventoryApp.Models
         public string ContactName { get; set; }
 
         [Required]
-        [StringLength(255)]
+        [StringLength(30)]
         public string ContactNumber { get; set; }
+
+        [Required]
+        public string ContactEmail { get; set; }
     }
 }
