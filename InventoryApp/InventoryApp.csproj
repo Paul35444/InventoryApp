@@ -207,6 +207,10 @@
     <Compile Include="Migrations\201710172303097_OverrideConventionsForItemsAndCompanies.Designer.cs">
       <DependentUpon>201710172303097_OverrideConventionsForItemsAndCompanies.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710172311142_PopulateCompaniesTable.cs" />
+    <Compile Include="Migrations\201710172311142_PopulateCompaniesTable.Designer.cs">
+      <DependentUpon>201710172311142_PopulateCompaniesTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -300,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710172303097_OverrideConventionsForItemsAndCompanies.resx">
       <DependentUpon>201710172303097_OverrideConventionsForItemsAndCompanies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710172311142_PopulateCompaniesTable.resx">
+      <DependentUpon>201710172311142_PopulateCompaniesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
