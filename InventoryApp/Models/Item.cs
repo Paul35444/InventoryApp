@@ -6,25 +6,26 @@ namespace InventoryApp.Models
     {
         public int Id { get; set; }
 
+
         public ApplicationUser User { get; set; }
 
         [Required]
         public string UserId { get; set; }
 
-        //public DateTime DateTime { get; set; }
 
         [Required]
         [StringLength(255)]
         public string Description { get; set; }
 
+        [Required]
         public int Cost { get; set; }
         
         [Required]
         public int Quantity { get; set; }
 
+        [Required]
         public string Company { get; set; }
 
-        [Required]
-        public byte CompanyId { get; set; }
+        //public string CompanyId { get; set; }
     }
 }

@@ -228,6 +228,14 @@
     <Compile Include="Migrations\201710182002265_UpdatedItemModelReqs.Designer.cs">
       <DependentUpon>201710182002265_UpdatedItemModelReqs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710182258158_AddModelReqs.cs" />
+    <Compile Include="Migrations\201710182258158_AddModelReqs.Designer.cs">
+      <DependentUpon>201710182258158_AddModelReqs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710182315051_RemovedCompanyId.cs" />
+    <Compile Include="Migrations\201710182315051_RemovedCompanyId.Designer.cs">
+      <DependentUpon>201710182315051_RemovedCompanyId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -338,6 +346,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710182002265_UpdatedItemModelReqs.resx">
       <DependentUpon>201710182002265_UpdatedItemModelReqs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710182258158_AddModelReqs.resx">
+      <DependentUpon>201710182258158_AddModelReqs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710182315051_RemovedCompanyId.resx">
+      <DependentUpon>201710182315051_RemovedCompanyId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

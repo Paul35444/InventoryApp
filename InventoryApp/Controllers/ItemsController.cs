@@ -1,13 +1,14 @@
 ﻿using InventoryApp.Models;
 using InventoryApp.ViewModels;
 using Microsoft.AspNet.Identity;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace InventoryApp.Controllers
 {
     public class ItemsController : Controller
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public ItemsController()
         {
@@ -19,7 +20,7 @@ namespace InventoryApp.Controllers
         {
             var viewModel = new ItemFormViewModel
             {
-                
+                Items = _context.Items.ToList()
             };
             return View(viewModel);
         }
@@ -30,20 +31,26 @@ namespace InventoryApp.Controllers
         {
             //var userId = User.Identity.GetUserId();
             //var user = _context.Users.Single(u => u.Id == userId);
-
-            var item = new Item
+            if (!ModelState.IsValid)
             {
-                UserId = User.Identity.GetUserId(),
-                CompanyId = viewModel.Company,
-                Quantity = viewModel.Quantity,
-                Description = viewModel.Description,
-                Cost = viewModel.Cost
-            };
+                viewModel.Items = _context.Items.ToList();
 
-            _context.Items.Add(item);
-            _context.SaveChanges();
+                return View("Create", viewModel);
+            }
+                var item = new Item
+                {
+                    UserId = User.Identity.GetUserId(),
+                    Company = viewModel.Company,
+                    //CompanyId = Company.Identity.GetCompanyId(),
+                    Quantity = viewModel.Quantity,
+                    Description = viewModel.Description,
+                    Cost = viewModel.Cost
+                };
 
-            return RedirectToAction("Index", "Home");
+                _context.Items.Add(item);
+                _context.SaveChanges();
+
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
-}
