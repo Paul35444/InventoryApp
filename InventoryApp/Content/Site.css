@@ -22,3 +22,13 @@ select,
 textarea {
     max-width: 280px;
 }
+
+span.field-validation-error {
+    color: red;
+    font-weight: bold;
+}
+
+span.field-validation-valid {
+    color: red;
+    font-weight: bold;
+}

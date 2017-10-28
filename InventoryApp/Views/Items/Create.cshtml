@@ -7,24 +7,25 @@
 <h2>Add Inventory</h2>
 @using (Html.BeginForm("Create", "Items"))
 {
+    <p class="alert alert-warning">All Fields Are <strong>Required</strong>.</p>
     <div class="form-group">
         @Html.LabelFor(m => m.Description)
-        @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.Description, new { @class = "form-control", autofocus = "autofocus", placeholder = "Item Description" })
         @Html.ValidationMessageFor(m => m.Description)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Company)
-        @Html.TextBoxFor(m => m.Company, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Company)
+        @Html.TextBoxFor(m => m.Company, new { @class = "form-control", placeholder = "Company Name" })
+        @Html.ValidationMessageFor(m => m.Company) 
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Cost)
-        @Html.TextBoxFor(m => m.Cost, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.Cost, new { @class = "form-control", placeholder = "$0.00" })
         @Html.ValidationMessageFor(m => m.Cost)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Quantity)
-        @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control", placeholder = "Quantity" })
         @Html.ValidationMessageFor(m => m.Quantity)
     </div>
     <button type="submit" class="btn btn-success">Save</button>
