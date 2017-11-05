@@ -1,23 +1,16 @@
-﻿using InventoryApp.Models;
-using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace InventoryApp.Controllers
 {
     public class HomeController : Controller
     {
-        private ApplicationDbContext _context;
-
-        public HomeController()
-        {
-                _context = new ApplicationDbContext();
-        }
-
         public ActionResult Index()
         {
-            var enteredItems = _context.Items.Include(i => i.Description);
-
-            return View(enteredItems);
+            return View();
         }
 
         public ActionResult About()
