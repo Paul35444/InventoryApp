@@ -236,6 +236,14 @@
     <Compile Include="Migrations\201710182315051_RemovedCompanyId.Designer.cs">
       <DependentUpon>201710182315051_RemovedCompanyId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711060313076_UpdateAppDbContext.cs" />
+    <Compile Include="Migrations\201711060313076_UpdateAppDbContext.Designer.cs">
+      <DependentUpon>201711060313076_UpdateAppDbContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711062209547_AddNameToAppUser.cs" />
+    <Compile Include="Migrations\201711062209547_AddNameToAppUser.Designer.cs">
+      <DependentUpon>201711062209547_AddNameToAppUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -354,6 +362,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710182315051_RemovedCompanyId.resx">
       <DependentUpon>201710182315051_RemovedCompanyId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711060313076_UpdateAppDbContext.resx">
+      <DependentUpon>201711060313076_UpdateAppDbContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711062209547_AddNameToAppUser.resx">
+      <DependentUpon>201711062209547_AddNameToAppUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
