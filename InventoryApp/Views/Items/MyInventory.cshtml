@@ -38,6 +38,9 @@
                     <text>Cost: </text>
                     @item.Cost
                 </span>
+                <div class="actions">
+                    <a href="@Url.Action("Edit", "Items", new { id = item.Id })">Edit</a>
+                </div>
             </div>
         </li>
     }
