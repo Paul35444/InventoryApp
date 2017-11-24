@@ -1,6 +1,7 @@
 ﻿using InventoryApp.Models;
 using InventoryApp.ViewModels;
 using Microsoft.AspNet.Identity;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -13,6 +14,17 @@ namespace InventoryApp.Controllers
         public ItemsController()
         {
             _context = new ApplicationDbContext();
+        }
+
+        [Authorize]
+        public ActionResult MyInventory()
+        {
+            var userId = User.Identity.GetUserId();
+            var items = _context.Items.Where(i => i.UserId == userId)
+                .Include(i => i.Company)
+                .ToList();
+
+            return View(items);
         }
 
         [Authorize]
@@ -50,7 +62,7 @@ namespace InventoryApp.Controllers
                 _context.Items.Add(item);
                 _context.SaveChanges();
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("MyInventory", "Item");
             }
         }
     }

@@ -32,3 +32,8 @@ span.field-validation-valid {
     color: red;
     font-weight: bold;
 }
+
+/* Page-level Styles*/
+.items {
+    list-style: circle;
+}

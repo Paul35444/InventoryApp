@@ -1,12 +1,13 @@
 ﻿@model IEnumerable<InventoryApp.Models.Item>
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "MyInventory";
 }
+
+<h2>My Inventory</h2>
 
 <ul class="items">
     @foreach (var item in Model)
     {
-        //<li>@item.Description - @item.User.Name</li>
         <li>
             <div class="description">
                 <span class="description">
@@ -29,7 +30,6 @@
                 </span>
             </div>
             <div class="details">
-                <!--TODO: display quantity and cost-->
                 <span class="quantity">
                     <text>Quantity: </text>
                     @item.Quantity
