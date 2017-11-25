@@ -1,5 +1,6 @@
 ﻿using InventoryApp.Models;
 using System.Data.Entity;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace InventoryApp.Controllers
@@ -15,7 +16,10 @@ namespace InventoryApp.Controllers
 
         public ActionResult Index()
         {
-            var enteredItems = _context.Items.Include(i => i.User);
+            var enteredItems = _context
+                .Items
+                .Include(i => i.User)
+                .Where(i => !i.IsDeleted);
 
             return View(enteredItems);
         }

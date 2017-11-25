@@ -20,7 +20,8 @@ namespace InventoryApp.Controllers
         public ActionResult MyInventory()
         {
             var userId = User.Identity.GetUserId();
-            var items = _context.Items.Where(i => i.UserId == userId)
+            var items = _context.Items
+                .Where(i => i.UserId == userId && !i.IsDeleted)
                 .Include(i => i.Company)
                 .ToList();
 

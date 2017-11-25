@@ -12,6 +12,11 @@
                 <span class="description">
                     <text>Description: </text>
                     @item.Description
+
+                    @if (item.IsDeleted)
+                    {
+                        <span class="label label-warning">Deleted</span>
+                    }
                 </span>
                 <span class="company">
                     <text>Company: </text>

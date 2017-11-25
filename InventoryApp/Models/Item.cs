@@ -6,6 +6,7 @@ namespace InventoryApp.Models
     {
         public int Id { get; set; }
 
+        public bool IsDeleted { get; set; }
 
         public ApplicationUser User { get; set; }
 
