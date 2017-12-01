@@ -14,12 +14,20 @@ namespace InventoryApp.Controllers
             _context = new ApplicationDbContext();
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string query = null)
         {
             var enteredItems = _context
                 .Items
                 .Include(i => i.User)
                 .Where(i => !i.IsDeleted);
+
+            if(!string.IsNullOrWhiteSpace(query))
+            {
+                enteredItems = enteredItems
+                    .Where(i =>
+                    i.Company.Contains(query) ||
+                    i.Description.Contains(query));
+            }
 
             return View(enteredItems);
         }

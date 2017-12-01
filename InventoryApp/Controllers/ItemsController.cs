@@ -28,6 +28,12 @@ namespace InventoryApp.Controllers
             return View(items);
         }
 
+        [HttpPost]
+        public ActionResult Search(ItemFormViewModel viewModel)
+        {
+            return RedirectToAction("Index", "Home", new { query = viewModel.SearchTerm });
+        }
+
         [Authorize]
         public ActionResult Create()
         {

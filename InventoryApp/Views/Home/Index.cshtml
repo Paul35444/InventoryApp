@@ -1,6 +1,19 @@
 ﻿@model IEnumerable<InventoryApp.Models.Item>
+@model InventoryApp.ViewModels.ItemFormViewModel
 @{
     ViewBag.Title = "Home Page";
+}
+
+@using (Html.BeginForm("Search", "Items"))
+{
+    <div class="form-group">
+        <div class="input-group">
+            @Html.TextBoxFor(i => i.SearchTerm, new { @class = "form-control" })
+            <span class="input-group-addon">
+                <i class="glyphicon glyphicon-search"></i>
+            </span>
+        </div>
+    </div>
 }
 
 <ul class="items">
@@ -45,5 +58,5 @@
                 </span>
             </div>
         </li>
-    }
+        }
 </ul>
