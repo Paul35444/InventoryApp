@@ -1,7 +1,7 @@
 ﻿using InventoryApp.Models;
+using InventoryApp.Persistence;
 using InventoryApp.ViewModels;
 using Microsoft.AspNet.Identity;
-using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -10,23 +10,14 @@ namespace InventoryApp.Controllers
     public class ItemsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UnitOfWork _unitOfWork;
 
         public ItemsController()
         {
             _context = new ApplicationDbContext();
+            _unitOfWork = new UnitOfWork(_context);
         }
 
-        [Authorize]
-        public ActionResult MyInventory()
-        {
-            var userId = User.Identity.GetUserId();
-            var items = _context.Items
-                .Where(i => i.UserId == userId && !i.IsDeleted)
-                .Include(i => i.Company)
-                .ToList();
-
-            return View(items);
-        }
 
         [HttpPost]
         public ActionResult Search(ItemFormViewModel viewModel)
@@ -76,15 +67,24 @@ namespace InventoryApp.Controllers
                 return View("Create", viewModel);
             }
 
-            var userId = User.Identity.GetUserId();
-            var item = _context.Items.Single(i => i.Id == viewModel.Id && i.UserId == userId);
+            //var item = _context.Items.Single(i => i.Id == viewModel.Id && i.UserId == userId);
+            var item = _unitOfWork.Items.GetAllItems(viewModel.Id);
+
+            if (item == null)
+                return HttpNotFound();
+
+
+            //var userId = User.Identity.GetUserId();
+            //above var is in inline var next line
+            if (item.UserId != User.Identity.GetUserId())
+                return new HttpUnauthorizedResult();
 
             item.Description = viewModel.Description;
             item.Company = viewModel.Company;
             item.Cost = viewModel.Cost;
             item.Quantity = viewModel.Quantity;
 
-            _context.SaveChanges();
+            _unitOfWork.Complete();
 
             return RedirectToAction("MyInventory", "Item");
         }
@@ -111,9 +111,10 @@ namespace InventoryApp.Controllers
                 Cost = viewModel.Cost
             };
 
-            _context.Items.Add(item);
-            _context.SaveChanges();
+            _unitOfWork.Items.Add(item);
 
+            _unitOfWork.Complete();
+            
             return RedirectToAction("MyInventory", "Item");
         }
     }
