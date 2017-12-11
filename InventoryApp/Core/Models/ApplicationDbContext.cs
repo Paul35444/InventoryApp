@@ -1,8 +1,8 @@
-﻿using System.Data.Entity;
-using InventoryApp.Core.Models;
+﻿using InventoryApp.Persistence.EntityConfigurations;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 
-namespace InventoryApp.Persistence
+namespace InventoryApp.Core.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -17,6 +17,11 @@ namespace InventoryApp.Persistence
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new ItemConfiguration());
         }
     }
 }

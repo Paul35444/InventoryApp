@@ -1,3 +1,4 @@
+using InventoryApp.Core.Models;
 using InventoryApp.Persistence;
 
 namespace InventoryApp.Migrations

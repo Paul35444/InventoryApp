@@ -235,6 +235,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Persistence\EntityConfigurations\ItemConfiguration.cs" />
     <Compile Include="Persistence\Migrations\201710172217207_InitialModel.cs" />
     <Compile Include="Persistence\Migrations\201710172217207_InitialModel.Designer.cs">
       <DependentUpon>201710172217207_InitialModel.cs</DependentUpon>
@@ -289,7 +290,7 @@
     </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
     <Compile Include="Core\ViewModels\AccountViewModels.cs" />
-    <Compile Include="Persistence\ApplicationDbContext.cs" />
+    <Compile Include="Core\Models\ApplicationDbContext.cs" />
     <Compile Include="Core\Models\ApplicationUser.cs" />
     <Compile Include="Core\Models\Company.cs" />
     <Compile Include="Core\Models\Item.cs" />

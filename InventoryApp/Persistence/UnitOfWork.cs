@@ -1,4 +1,5 @@
 ﻿using InventoryApp.Core;
+using InventoryApp.Core.Models;
 using InventoryApp.Core.Repositories;
 using InventoryApp.Persistence.Repositories;
 
