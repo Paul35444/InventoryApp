@@ -1,13 +1,14 @@
-﻿using InventoryApp.Models;
-using InventoryApp.Repositories;
+﻿using InventoryApp.Core;
+using InventoryApp.Core.Repositories;
+using InventoryApp.Persistence.Repositories;
 
 namespace InventoryApp.Persistence
 {
-    public class UnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationDbContext _context;
 
-        public ItemRepository Items { get; private set; }
+        public IItemRepository Items { get; private set; }
 
         public UnitOfWork(ApplicationDbContext context)
         {

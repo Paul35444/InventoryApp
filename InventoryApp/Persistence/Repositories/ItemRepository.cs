@@ -1,11 +1,12 @@
-﻿using InventoryApp.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using InventoryApp.Core.Models;
+using InventoryApp.Core.Repositories;
 
-namespace InventoryApp.Repositories
+namespace InventoryApp.Persistence.Repositories
 {
-    public class ItemRepository
+    public class ItemRepository : IItemRepository
     {
         private readonly ApplicationDbContext _context;
 

@@ -46,10 +46,34 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.2.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject, Version=3.3.3.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.3\lib\net45\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Conventions.3.3.0\lib\net45\Ninject.Extensions.Conventions.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Factory, Version=3.3.2.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Factory.3.3.2\lib\net45\Ninject.Extensions.Factory.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.3.0\lib\net45\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common.WebHost, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.WebHost.3.3.0\lib\net45\Ninject.Web.Common.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC5.3.3.0\lib\net45\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.WebApi, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.WebApi.3.3.0\lib\net45\Ninject.Web.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -111,6 +135,9 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -196,6 +223,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -207,76 +235,79 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710172217207_InitialModel.cs" />
-    <Compile Include="Migrations\201710172217207_InitialModel.Designer.cs">
+    <Compile Include="Persistence\Migrations\201710172217207_InitialModel.cs" />
+    <Compile Include="Persistence\Migrations\201710172217207_InitialModel.Designer.cs">
       <DependentUpon>201710172217207_InitialModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710172232052_CreateItemTable.cs" />
-    <Compile Include="Migrations\201710172232052_CreateItemTable.Designer.cs">
+    <Compile Include="Persistence\Migrations\201710172232052_CreateItemTable.cs" />
+    <Compile Include="Persistence\Migrations\201710172232052_CreateItemTable.Designer.cs">
       <DependentUpon>201710172232052_CreateItemTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710172303097_OverrideConventionsForItemsAndCompanies.cs" />
-    <Compile Include="Migrations\201710172303097_OverrideConventionsForItemsAndCompanies.Designer.cs">
+    <Compile Include="Persistence\Migrations\201710172303097_OverrideConventionsForItemsAndCompanies.cs" />
+    <Compile Include="Persistence\Migrations\201710172303097_OverrideConventionsForItemsAndCompanies.Designer.cs">
       <DependentUpon>201710172303097_OverrideConventionsForItemsAndCompanies.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710172311142_PopulateCompaniesTable.cs" />
-    <Compile Include="Migrations\201710172311142_PopulateCompaniesTable.Designer.cs">
+    <Compile Include="Persistence\Migrations\201710172311142_PopulateCompaniesTable.cs" />
+    <Compile Include="Persistence\Migrations\201710172311142_PopulateCompaniesTable.Designer.cs">
       <DependentUpon>201710172311142_PopulateCompaniesTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710181920569_InputData.cs" />
-    <Compile Include="Migrations\201710181920569_InputData.Designer.cs">
+    <Compile Include="Persistence\Migrations\201710181920569_InputData.cs" />
+    <Compile Include="Persistence\Migrations\201710181920569_InputData.Designer.cs">
       <DependentUpon>201710181920569_InputData.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710181941285_AddForeignKeyPropertiesToItem.cs" />
-    <Compile Include="Migrations\201710181941285_AddForeignKeyPropertiesToItem.Designer.cs">
+    <Compile Include="Persistence\Migrations\201710181941285_AddForeignKeyPropertiesToItem.cs" />
+    <Compile Include="Persistence\Migrations\201710181941285_AddForeignKeyPropertiesToItem.Designer.cs">
       <DependentUpon>201710181941285_AddForeignKeyPropertiesToItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710182000145_AddForeignKeyPropertiesToItem2.cs" />
-    <Compile Include="Migrations\201710182000145_AddForeignKeyPropertiesToItem2.Designer.cs">
+    <Compile Include="Persistence\Migrations\201710182000145_AddForeignKeyPropertiesToItem2.cs" />
+    <Compile Include="Persistence\Migrations\201710182000145_AddForeignKeyPropertiesToItem2.Designer.cs">
       <DependentUpon>201710182000145_AddForeignKeyPropertiesToItem2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710182002265_UpdatedItemModelReqs.cs" />
-    <Compile Include="Migrations\201710182002265_UpdatedItemModelReqs.Designer.cs">
+    <Compile Include="Persistence\Migrations\201710182002265_UpdatedItemModelReqs.cs" />
+    <Compile Include="Persistence\Migrations\201710182002265_UpdatedItemModelReqs.Designer.cs">
       <DependentUpon>201710182002265_UpdatedItemModelReqs.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710182258158_AddModelReqs.cs" />
-    <Compile Include="Migrations\201710182258158_AddModelReqs.Designer.cs">
+    <Compile Include="Persistence\Migrations\201710182258158_AddModelReqs.cs" />
+    <Compile Include="Persistence\Migrations\201710182258158_AddModelReqs.Designer.cs">
       <DependentUpon>201710182258158_AddModelReqs.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710182315051_RemovedCompanyId.cs" />
-    <Compile Include="Migrations\201710182315051_RemovedCompanyId.Designer.cs">
+    <Compile Include="Persistence\Migrations\201710182315051_RemovedCompanyId.cs" />
+    <Compile Include="Persistence\Migrations\201710182315051_RemovedCompanyId.Designer.cs">
       <DependentUpon>201710182315051_RemovedCompanyId.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711060313076_UpdateAppDbContext.cs" />
-    <Compile Include="Migrations\201711060313076_UpdateAppDbContext.Designer.cs">
+    <Compile Include="Persistence\Migrations\201711060313076_UpdateAppDbContext.cs" />
+    <Compile Include="Persistence\Migrations\201711060313076_UpdateAppDbContext.Designer.cs">
       <DependentUpon>201711060313076_UpdateAppDbContext.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711062209547_AddNameToAppUser.cs" />
-    <Compile Include="Migrations\201711062209547_AddNameToAppUser.Designer.cs">
+    <Compile Include="Persistence\Migrations\201711062209547_AddNameToAppUser.cs" />
+    <Compile Include="Persistence\Migrations\201711062209547_AddNameToAppUser.Designer.cs">
       <DependentUpon>201711062209547_AddNameToAppUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711250308513_AddIsDeletedToItem.cs" />
-    <Compile Include="Migrations\201711250308513_AddIsDeletedToItem.Designer.cs">
+    <Compile Include="Persistence\Migrations\201711250308513_AddIsDeletedToItem.cs" />
+    <Compile Include="Persistence\Migrations\201711250308513_AddIsDeletedToItem.Designer.cs">
       <DependentUpon>201711250308513_AddIsDeletedToItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\ApplicationUser.cs" />
-    <Compile Include="Models\Company.cs" />
-    <Compile Include="Models\Item.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Persistence\Migrations\Configuration.cs" />
+    <Compile Include="Core\ViewModels\AccountViewModels.cs" />
+    <Compile Include="Persistence\ApplicationDbContext.cs" />
+    <Compile Include="Core\Models\ApplicationUser.cs" />
+    <Compile Include="Core\Models\Company.cs" />
+    <Compile Include="Core\Models\Item.cs" />
+    <Compile Include="Core\ViewModels\ManageViewModels.cs" />
+    <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ItemRepository.cs" />
+    <Compile Include="Core\Repositories\IItemRepository.cs" />
+    <Compile Include="Persistence\Repositories\ItemRepository.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\ItemFormViewModel.cs" />
+    <Compile Include="Core\ViewModels\ItemFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <None Include="Content\site.less" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootbox.min.js" />
@@ -339,56 +370,56 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710172217207_InitialModel.resx">
+    <EmbeddedResource Include="Persistence\Migrations\201710172217207_InitialModel.resx">
       <DependentUpon>201710172217207_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710172232052_CreateItemTable.resx">
+    <EmbeddedResource Include="Persistence\Migrations\201710172232052_CreateItemTable.resx">
       <DependentUpon>201710172232052_CreateItemTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710172303097_OverrideConventionsForItemsAndCompanies.resx">
+    <EmbeddedResource Include="Persistence\Migrations\201710172303097_OverrideConventionsForItemsAndCompanies.resx">
       <DependentUpon>201710172303097_OverrideConventionsForItemsAndCompanies.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710172311142_PopulateCompaniesTable.resx">
+    <EmbeddedResource Include="Persistence\Migrations\201710172311142_PopulateCompaniesTable.resx">
       <DependentUpon>201710172311142_PopulateCompaniesTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710181920569_InputData.resx">
+    <EmbeddedResource Include="Persistence\Migrations\201710181920569_InputData.resx">
       <DependentUpon>201710181920569_InputData.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710181941285_AddForeignKeyPropertiesToItem.resx">
+    <EmbeddedResource Include="Persistence\Migrations\201710181941285_AddForeignKeyPropertiesToItem.resx">
       <DependentUpon>201710181941285_AddForeignKeyPropertiesToItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710182000145_AddForeignKeyPropertiesToItem2.resx">
+    <EmbeddedResource Include="Persistence\Migrations\201710182000145_AddForeignKeyPropertiesToItem2.resx">
       <DependentUpon>201710182000145_AddForeignKeyPropertiesToItem2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710182002265_UpdatedItemModelReqs.resx">
+    <EmbeddedResource Include="Persistence\Migrations\201710182002265_UpdatedItemModelReqs.resx">
       <DependentUpon>201710182002265_UpdatedItemModelReqs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710182258158_AddModelReqs.resx">
+    <EmbeddedResource Include="Persistence\Migrations\201710182258158_AddModelReqs.resx">
       <DependentUpon>201710182258158_AddModelReqs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710182315051_RemovedCompanyId.resx">
+    <EmbeddedResource Include="Persistence\Migrations\201710182315051_RemovedCompanyId.resx">
       <DependentUpon>201710182315051_RemovedCompanyId.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711060313076_UpdateAppDbContext.resx">
+    <EmbeddedResource Include="Persistence\Migrations\201711060313076_UpdateAppDbContext.resx">
       <DependentUpon>201711060313076_UpdateAppDbContext.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711062209547_AddNameToAppUser.resx">
+    <EmbeddedResource Include="Persistence\Migrations\201711062209547_AddNameToAppUser.resx">
       <DependentUpon>201711062209547_AddNameToAppUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711250308513_AddIsDeletedToItem.resx">
+    <EmbeddedResource Include="Persistence\Migrations\201711250308513_AddIsDeletedToItem.resx">
       <DependentUpon>201711250308513_AddIsDeletedToItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>

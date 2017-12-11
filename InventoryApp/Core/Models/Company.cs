@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace InventoryApp.Models
+namespace InventoryApp.Core.Models
 {
     public class Company
     {

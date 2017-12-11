@@ -1,7 +1,8 @@
-﻿using InventoryApp.Models;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web.Http;
+using InventoryApp.Core.Models;
+using InventoryApp.Persistence;
 
 namespace InventoryApp.Controllers.Api
 {

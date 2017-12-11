@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using System.Data.Entity;
+﻿using System.Data.Entity;
+using InventoryApp.Core.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace InventoryApp.Models
+namespace InventoryApp.Persistence
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

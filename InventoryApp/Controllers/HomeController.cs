@@ -1,7 +1,8 @@
-﻿using InventoryApp.Models;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using InventoryApp.Core.Models;
+using InventoryApp.Persistence;
 
 namespace InventoryApp.Controllers
 {

@@ -1,6 +1,7 @@
-﻿using InventoryApp.Models;
+﻿using InventoryApp.Core;
+using InventoryApp.Core.Models;
+using InventoryApp.Core.ViewModels;
 using InventoryApp.Persistence;
-using InventoryApp.ViewModels;
 using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web.Mvc;
@@ -9,13 +10,11 @@ namespace InventoryApp.Controllers
 {
     public class ItemsController : Controller
     {
-        private readonly ApplicationDbContext _context;
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public ItemsController()
+        public ItemsController(IUnitOfWork unitOfWork)
         {
-            _context = new ApplicationDbContext();
-            _unitOfWork = new UnitOfWork(_context);
+            _unitOfWork = unitOfWork;
         }
 
 
@@ -30,7 +29,7 @@ namespace InventoryApp.Controllers
         {
             var viewModel = new ItemFormViewModel
             {
-                Items = _context.Items.ToList(),
+                Items = new ApplicationDbContext().Items.ToList(),
                 Heading = "Add Inventory"
             };
             return View(viewModel);
@@ -40,13 +39,14 @@ namespace InventoryApp.Controllers
         public ActionResult Edit(int id)
         {
             var userId = User.Identity.GetUserId();
-            var item = _context.Items.Single(i => i.Id == id && i.UserId == userId);
+            var context = new ApplicationDbContext();
+            var item = context.Items.Single(i => i.Id == id && i.UserId == userId);
 
             var viewModel = new ItemFormViewModel
             {
                 Heading = "Edit Inventory",
                 Id = item.Id,
-                Items = _context.Items.ToList(),
+                Items = context.Items.ToList(),
                 Company = item.Company,
                 Description = item.Description,
                 Quantity = item.Quantity,
@@ -62,7 +62,7 @@ namespace InventoryApp.Controllers
         {
             if (!ModelState.IsValid)
             {
-                viewModel.Items = _context.Items.ToList();
+                viewModel.Items = new ApplicationDbContext().Items.ToList();
 
                 return View("Create", viewModel);
             }
@@ -97,7 +97,7 @@ namespace InventoryApp.Controllers
             //var user = _context.Users.Single(u => u.Id == userId);
             if (!ModelState.IsValid)
             {
-                viewModel.Items = _context.Items.ToList();
+                viewModel.Items = new ApplicationDbContext().Items.ToList();
 
                 return View("Create", viewModel);
             }

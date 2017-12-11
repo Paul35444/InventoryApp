@@ -1,12 +1,12 @@
-﻿using InventoryApp.Controllers;
-using InventoryApp.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 using System.Web.Mvc;
+using InventoryApp.Controllers;
+using InventoryApp.Core.Models;
 
-namespace InventoryApp.ViewModels
+namespace InventoryApp.Core.ViewModels
 {
     public class ItemFormViewModel
     {
